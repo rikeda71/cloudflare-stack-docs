@@ -5,6 +5,10 @@ Cloudflare で作るドキュメントシステム。
 
 ## Usage
 
+> [!NOTE]
+> 現在、GitHub Actions の自動デプロイワークフロー（[deploy.yaml](./.github/workflows/deploy.yaml)）は一時的に無効化されています。
+> デプロイを有効化するには、`deploy.yaml` の 18 行目にある `if: false` の行を削除またはコメントアウトしてください。
+
 最低限、以下の設定によってデプロイが可能。
 
 1. プロフィール -> API トークンから、Workers スクリプトの編集権限を付与してユーザー API トークンを作成する。作成したトークンの値を次の環境変数で GitHub Actions の secret に追加する。
