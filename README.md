@@ -15,7 +15,6 @@ Cloudflare で作るドキュメントシステム。
 1. プロフィール -> API トークンから、Workers スクリプトの編集権限を付与してユーザー API トークンを作成する。作成したトークンの値を次の環境変数で GitHub Actions の secret に追加する。
 
     - CLOUDFLARE_API_TOKEN : Cloudflare Workers を編集する権限を持つ API Token
-    - CLOUDFLARE_ACCOUNT_ID : Cloudflare アカウント ID（ダッシュボードの右サイドバーで確認可能）
 
 2. Cloudflare Workers のアプリケーションを Workers and Pages のページから作成する。作成時は Continue with GitHub を利用し、作成後に設定画面からリポジトリとの接続を解除すると良い。なお、Cloudflare Workers へのデプロイは mermaid で作成した図の描画のために GitHub Actions 経由で行うようにしてある（[deploy.yaml](./.github/workflows/deploy.yaml)）。
 
