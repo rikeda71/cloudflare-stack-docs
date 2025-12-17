@@ -6,8 +6,9 @@ Cloudflare で作るドキュメントシステム。
 ## Usage
 
 > [!NOTE]
-> 現在、GitHub Actions の自動デプロイワークフロー（[deploy.yaml](./.github/workflows/deploy.yaml)）は一時的に無効化されています。
-> デプロイを有効化するには、`deploy.yaml` の 18 行目にある `if: false` の行を削除またはコメントアウトしてください。
+> 現在、以下の GitHub Actions ワークフローが一時的に無効化されています：
+> - **自動デプロイ**（[deploy.yaml](./.github/workflows/deploy.yaml)）：18 行目の `if: false` を削除またはコメントアウトして有効化
+> - **R2 へのアップロード**（[upload-to-r2.yml](./.github/workflows/upload-to-r2.yml)）：19 行目の `if: false` を削除またはコメントアウトして有効化
 
 最低限、以下の設定によってデプロイが可能。
 
