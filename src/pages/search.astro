@@ -1,0 +1,25 @@
+---
+export const prerender = false;
+
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import AISearch from "../components/AISearch.tsx";
+
+const frontmatter = {
+  title: "RAG Search",
+};
+---
+
+<StarlightPage frontmatter={frontmatter}>
+  <AISearch client:load />
+
+</StarlightPage>
+
+<style>
+  /**
+    * NOTE: ページ遷移ボタンを非表示
+    *       力技で非表示にしているが、Fragment などで対応できるとより良い
+   */
+  :global(.pagination-links) {
+    display: none !important;
+  }
+</style>

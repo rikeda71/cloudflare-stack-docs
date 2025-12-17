@@ -1,0 +1,64 @@
+name: Upload Markdown to Cloudflare R2
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/content/docs/**/*.md"
+      - "src/content/docs/**/*.mdx"
+  workflow_dispatch:
+
+env:
+  R2_BUCKET_NAME: docs
+  R2_ENDPOINT: https://${{ secrets.CLOUDFLARE_ACCOUNT_ID }}.r2.cloudflarestorage.com
+
+jobs:
+  upload-to-r2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials for R2
+        run: |
+          # AWS CLIの認証情報を直接設定
+          # NOTE: R2はSTSを使用しないため、aws-actions/configure-aws-credentials を利用しない
+          aws configure set aws_access_key_id ${{ secrets.R2_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          aws configure set default.region auto
+          aws configure set default.output json
+
+      - name: Sync documentation to R2
+        run: |
+          echo "Starting sync to R2 bucket: ${{ env.R2_BUCKET_NAME }}"
+          echo "Endpoint: ${{ env.R2_ENDPOINT }}"
+          echo "========================================="
+
+          # AWS CLIでディレクトリ全体を効率的に同期
+          # --size-only: ファイルサイズの変更のみをチェック（タイムスタンプは無視）
+          # --no-progress: 進捗バーを非表示（CI環境向け）
+          # --delete: R2側の不要なファイルを削除（オプション）
+          aws s3 sync src/content/docs/ s3://${{ env.R2_BUCKET_NAME }}/docs/ \
+            --endpoint-url "${{ env.R2_ENDPOINT }}" \
+            --size-only \
+            --no-progress
+
+          echo ""
+          echo "✅ Sync completed successfully!"
+
+      - name: List sync summary
+        run: |
+          echo "========================================="
+          echo "Upload Summary"
+          echo "========================================="
+          echo "Event: ${{ github.event_name }}"
+
+          # R2バケットの内容を確認
+          echo ""
+          echo "Files in R2 bucket:"
+          aws s3 ls s3://${{ env.R2_BUCKET_NAME }}/docs/ \
+            --endpoint-url "${{ env.R2_ENDPOINT }}" \
+            --recursive \
+            --summarize | tail -2

@@ -1,0 +1,55 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill",
+      "Bash(pnpm textlint)",
+      "Bash(pnpm textlint:*)",
+      "Bash(pnpm format)",
+      "Bash(pnpm lint)",
+      "Bash(pnpm check)",
+      "Bash(pnpm dev)",
+      "Bash(pnpm build)",
+      "Bash(pnpm preview)",
+      "Bash(pnpm install*)",
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)",
+      "Bash(git pull*)",
+      "Bash(ls*)",
+      "Bash(cat*)",
+      "Bash(mkdir*)",
+      "Bash(cp*)",
+      "Bash(echo*)",
+      "Bash(pwd)",
+      "Bash(tree*)",
+      "Bash(find*)",
+      "Bash(grep*)",
+      "Bash(head*)",
+      "Bash(tail*)",
+      "Bash(wc*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)",
+      "Bash(sudo*)",
+      "Bash(chmod 777*)",
+      "Bash(curl*|*sh)",
+      "Bash(wget*|*sh)",
+      "Bash(pnpm deploy)",
+      "Bash(npm *)",
+      "Bash(yarn *)",
+      "Bash(npx *)"
+    ],
+    "ask": [
+      "Bash(pnpm add*)",
+      "Bash(pnpm remove*)",
+      "Bash(git switch*)",
+      "Bash(gh pr*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git push*)",
+      "Bash(git merge*)"
+    ]
+  }
+}

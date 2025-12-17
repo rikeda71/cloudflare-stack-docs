@@ -1,0 +1,43 @@
+{
+  "name": "cloudflare-stack-docs",
+  "type": "module",
+  "version": "0.0.1",
+  "author": {
+    "name": "rikeda71"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro build && wrangler dev",
+    "astro": "astro",
+    "deploy": "astro build && wrangler deploy",
+    "cf-typegen": "wrangler types",
+    "format": "biome format --write .",
+    "lint": "biome lint --write .",
+    "check": "biome check --write .",
+    "textlint": "textlint",
+    "textlint:fix": "textlint --fix"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/starlight": "^0.37.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.6.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "rehype-mermaid": "^3.0.0",
+    "sharp": "^0.34.2",
+    "textlint-plugin-mdx": "^1.0.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.8",
+    "@types/node": "^24.10.1",
+    "playwright": "^1.57.0",
+    "textlint": "^15.5.0",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2",
+    "wrangler": "^4.53.0"
+  }
+}
