@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "astro-build.astro-vscode",
+    "biomejs.biome",
+    "3w36zj6.textlint",
+    "unifiedjs.vscode-mdx",
+    "xyc.vscode-mdx-preview"
+  ],
+  "unwantedRecommendations": []
+}
