@@ -6,14 +6,16 @@ Cloudflare で作るドキュメントシステム。
 ## Usage
 
 > [!NOTE]
-> 現在、GitHub Actions の自動デプロイワークフロー（[deploy.yaml](./.github/workflows/deploy.yaml)）は一時的に無効化されています。
-> デプロイを有効化するには、`deploy.yaml` の 18 行目にある `if: false` の行を削除またはコメントアウトしてください。
+> 現在、以下の GitHub Actions ワークフローが一時的に無効化されています：
+> - **自動デプロイ**（[deploy.yaml](./.github/workflows/deploy.yaml)）：18 行目の `if: false` を削除またはコメントアウトして有効化
+> - **R2 へのアップロード**（[upload-to-r2.yml](./.github/workflows/upload-to-r2.yml)）：19 行目の `if: false` を削除またはコメントアウトして有効化
 
 最低限、以下の設定によってデプロイが可能。
 
 1. プロフィール -> API トークンから、Workers スクリプトの編集権限を付与してユーザー API トークンを作成する。作成したトークンの値を次の環境変数で GitHub Actions の secret に追加する。
 
     - CLOUDFLARE_API_TOKEN : Cloudflare Workers を編集する権限を持つ API Token
+    - CLOUDFLARE_ACCOUNT_ID : Cloudflare アカウント ID（ダッシュボードの右サイドバーで確認可能）
 
 2. Cloudflare Workers のアプリケーションを Workers and Pages のページから作成する。作成時は Continue with GitHub を利用し、作成後に設定画面からリポジトリとの接続を解除すると良い。なお、Cloudflare Workers へのデプロイは mermaid で作成した図の描画のために GitHub Actions 経由で行うようにしてある（[deploy.yaml](./.github/workflows/deploy.yaml)）。
 
